@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+	integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+	crossorigin="anonymous">
+
+<title>Delete Leave</title>
+</head>
+
+<body>
+
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card ">
+					<div class="card-body">
+						<h4 class="text-center text-primary">Delete Leave</h4>
+
+						<form th:action="@{/emp/updatedleave}" method="put"
+							th:object="${leave}">
+
+							<!-- <input type="hidden" th:value="${leave.leaveId}"
+								name=leaveId> -->
+
+							<div class="form-group">
+								<label>Confirm Leave Id</label> <input type="number"
+									class="form-control" name="leaveId"
+									>
+							</div>
+	
+							<div class="form-group">
+								<label>Confirm From date</label> <input type="date"
+									class="form-control" name="fromdateOfLeave"
+									>
+							</div>
+
+							<div class="form-group">
+								<label>Confirm To date</label> <input type="date"
+									class="form-control" name="todateOfLeave"
+									>
+							</div>
+
+
+							<div class="form-group">
+								<label>Confirm Reason</label> <input type="text"
+									class="form-control" name="reasonOfLeave"
+									>
+							</div>
+							
+							<div class="form-group">
+								<label> status</label> <input type="text"
+									class="form-control" name="leaveId"
+									>
+							</div>
+														
+							<button class="btn btn-primary btn-block">Delete</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

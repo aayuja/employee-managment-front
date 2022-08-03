@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+	integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+	crossorigin="anonymous">
+
+<title>Add Employee</title>
+</head>
+
+<body>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card ">
+					<div class="card-body">
+						<h4 class="text-center text-primary">View Profile</h4>
+
+						<form th:action="@{/emp/find}" method="post">
+
+
+							<div class="form-group">
+								<label>Enter  Employee Id</label> <input type="number"
+									class="form-control" name="empId">
+							</div>
+
+							<button class="btn btn-primary btn-block">Submit</button>
+						</form>
+						
+						<div th:switch="${employeeData}">
+		<h2 th:case="null"></h2>
+		<div th:case="*">
+		<div class="container p-5">
+		<table class="table">
+			<thead class="bg-primary text-white">
+			
+				<tr>
+					<td>Employee Id</td>
+					<td><span th:text="${employeeData.empId}"></span></td>
+				</tr>
+				<tr>
+					<td>Employee Name</td>
+					<td><span th:text="${employeeData.name}"></span></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><span th:text="${employeeData.email}"></span></td>
+				</tr>
+				<tr>
+					<td>Password</td>
+					<td><span th:text="${employeeData.password}"></span></td>
+				</tr>
+				
+				<tr>
+					<td>Action</td>
+					<td><a class="btn btn-sm btn-danger"
+						th:href="@{/emp/findTimesheet/{id}(id=${employeeData.empId})}">view timesheet</a> <a
+						class="btn btn-sm btn-danger"
+						th:href="@{/emp/findLeave/{id}(id=${employeeData.empId})}">view leave</a>
+						<a class="btn btn-sm btn-danger"
+						th:href="@{/emp/addTimesheet/{id}(id=${employeeData.empId})}">add timesheet</a>
+						<a class="btn btn-sm btn-danger"
+						th:href="@{/emp/addLeaves/{id} (id=${employeeData.empId})}">add leave</a>
+						
+						</td>
+						
+				</tr>
+			</table>
+		</div>
+	</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

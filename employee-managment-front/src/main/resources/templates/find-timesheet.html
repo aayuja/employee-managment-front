@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+	integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+	crossorigin="anonymous">
+
+<title>View Leave</title>
+</head>
+<body>
+	<div class="container p-5">
+		<table class="table">
+			<thead class="bg-primary text-white">
+				<tr>
+					<th scope="col">timesheetId</th>
+					<th scope="col">regularHours</th>
+					<th scope="col">extraHours</th>
+					<th scope="col">fromDate</th>
+					<th scope="col">toDate</th>
+				
+				</tr>
+			</thead>
+ 			 <tbody>
+				<tr th:each="e:${timesheetData}">
+					<th th:text="${e.timesheetId}"></th>
+					<td th:text="${e.regularHours}"></td>
+					<td th:text="${e.extraHours}"></td>
+					<td th:text="${e.fromDate}"></td>
+					<td th:text="${e.toDate}"></td>
+
+				</tr>
+
+			</tbody>  
+		</table>
+	</div>
+</body>
+</html>

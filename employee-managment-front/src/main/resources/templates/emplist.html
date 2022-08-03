@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+	border: 2px solid blue;
+}
+
+th td tr {
+	border: 2px solid blue;
+	width: 10%;
+	height: auto;
+}
+</style>
+</head>
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Employee Id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Password</th>
+				<th>Payslips</th>
+				<th>Leaves</th>
+				<th>Timesheets</th>
+				
+			</tr>
+		</thead>
+		<h2>Employee List</h2>
+		<tr th:each="employee:${employeelist}">
+			<td><a th:href="@{ find(id=${employee.empId}) }"> <span
+					th:text="${employee.empId}"></span></a></td>
+
+			<td><span th:text="${employee.name}"></span></td>
+			
+			<td><span th:text="${employee.email}"></span></td>
+			
+			<td><span th:text="${employee.password}"></span></td>
+			<td>
+				<table border="1">
+					<tr th:each="p:${employee.payslips}">
+                        <td><span th:text="${p.monthOfSalary}"></span></td>
+						<td><span th:text="${p.totalPaidDays}"></span></td>
+						<td><span th:text="${p.totalSalary}"></span></td>
+					</tr>
+				</table>
+			</td>
+				<td>
+				<table border="1">
+					<tr th:each="l:${employee.leaves}">
+                        <td><span th:text="${l.leaveId}"></span></td>
+                        <td><span th:text="${l.fromdateOfLeave}"></span></td>
+						<td><span th:text="${l.todateOfLeave}"></span></td>
+						<td><span th:text="${l.reasonOfLeavestatus}"></span></td>
+					</tr>
+				</table>
+			</td>
+					<td>
+				<table border="1">
+					<tr th:each="t:${employee.timesheets}">
+                        <td><span th:text="${t.regularHours}"></span></td>
+						<td><span th:text="${t.extraHours}"></span></td>
+						<td><span th:text="${t.fromDate}"></span></td>
+						<td><span th:text="${t.toDate}"></span></td>
+					</tr>
+				</table>
+			</td>
+			
+		</tr>
+
+	</table>
+
+
+</body>
+</html>

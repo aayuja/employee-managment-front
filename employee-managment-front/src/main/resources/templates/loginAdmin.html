@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+	integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+	crossorigin="anonymous">
+
+<title>Admin login</title>
+</head>
+
+<body>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card ">
+					<div class="card-body">
+						<h4 class="text-center text-primary">Admin Login</h4>
+
+						<form th:action="@{/emp/admin/verify/password}" method="post">
+
+
+							<div class="form-group">
+								<label>userName</label> <input type="text"
+									class="form-control" name="name">
+							</div>
+
+							<div class="form-group">
+								<label>password</label> <input type="text"
+									class="form-control" name="password">
+							</div>
+							
+							<div><br></div>
+							
+							<button class="btn btn-primary btn-block">Submit
+							</button>
+							
+							<div><br></div>
+							
+							<div class="form-group">
+
+									<a class="btn btn-sm btn-primary"
+						th:href="@{admin/forget/password}">Forget Password</a>
+							</div>
+							
+						</form>
+						
+				
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

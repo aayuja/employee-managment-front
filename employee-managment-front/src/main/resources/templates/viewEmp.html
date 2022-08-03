@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.rtl.min.css"
+	integrity="sha384-+4j30LffJ4tgIMrq9CwHvn0NjEvmuDCOfk6Rpg2xg7zgOxWWtLtozDEEVvBPgHqE"
+	crossorigin="anonymous">
+
+<title>View Employee</title>
+</head>
+<body>
+	<div class="container p-5">
+		<table class="table">
+			<thead class="bg-primary text-white">
+				<tr>
+					<th scope="col">EmpId</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Password</th>
+					<th scope="col">Payslips</th>
+					<th scope="col">Leaves</th>
+					<th scope="col">Timesheets</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e:${empData}">
+					<th th:text="${e.empId}"></th>
+					<td th:text="${e.name}"></td>
+					<td th:text="${e.email}"></td>
+					<td th:text="${e.password}"></td>
+								<td>
+				<table border="1">
+					<tr th:each="p:${e.payslips}">
+                        <td><span th:text="${p.monthOfSalary}"></span></td>
+						<td><span th:text="${p.totalPaidDays}"></span></td>
+						<td><span th:text="${p.totalSalary}"></span></td>
+					</tr>
+				</table>
+			</td>
+				<td>
+				<table border="1">
+					<tr th:each="l:${e.leaves}">
+                        <td><span th:text="${l.leaveId}"></span></td>
+                        <td><span th:text="${l.fromdateOfLeave}"></span></td>
+						<td><span th:text="${l.todateOfLeave}"></span></td>
+						<td><span th:text="${l.reasonOfLeave}"></span></td>
+							<td><span th:text="${l.status}"></span></td>
+					</tr>
+				</table>
+			</td>
+					<td>
+				<table border="1">
+					<tr th:each="t:${e.timesheets}">
+                        <td><span th:text="${t.regularHours}"></span></td>
+						<td><span th:text="${t.extraHours}"></span></td>
+						<td><span th:text="${t.fromDate}"></span></td>
+						<td><span th:text="${t.toDate}"></span></td>
+					</tr>
+				</table>
+			</td>
+			
+
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
